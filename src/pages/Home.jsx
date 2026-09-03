@@ -8,11 +8,6 @@ const listaUsuarios = [
 
 export default function Home() {
 
-  const [cantidad, setCantidad] = useState(1) // retorna un estado y un setter
-  // setCantidad(1)
-  const [loading, setLoading] = useState(true)
-  
-  const [products, setProducts] = useState()
 
   const [user, setUser] = useState({
     nombre: "valentino",
@@ -20,18 +15,6 @@ export default function Home() {
   })
 
   
-  useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data.products)
-        setLoading(false)
-      })
-  }, [])
-
-
-  console.log(products)
-
   const handleAdmin = () => {
     setUser({ ...user, admin: !user.admin })
   }
@@ -41,10 +24,6 @@ export default function Home() {
     <main className="flex-1 flex flex-col justify-center items-center">
       <h1 className="text-4xl text-blue-500 font-extrabold mb-4">La mejor tecnologia al mejor precio</h1>
       <p className="text-blue-500 font-semibold mb-6">Explora nuestro catálogo!</p>
-      <button className="bg-blue-600 px-6 py-2 rounded cursor-pointer">Ver Productos</button>
-
-      {loading ? (<p>Cargando...</p>) : (<p>Datos Cargados!</p>)}
-
 
       <button
         onClick={handleAdmin}
@@ -75,21 +54,6 @@ export default function Home() {
         </p>
       )}
 
-      <div className="flex items-center">
-        <button
-          onClick={() => setCantidad(cantidad - 1)}
-          className="p-2 bg-blue-500 rounded m-5"
-        >
-          -
-        </button>
-        Productos en el carrito: {cantidad}
-        <button
-          onClick={() => setCantidad(cantidad + 1)}
-          className="p-2 bg-blue-500 rounded m-5"
-        >
-          +
-        </button>
-      </div>
 
     </main>
   )
