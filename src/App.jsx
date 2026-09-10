@@ -4,6 +4,9 @@ import Footer from './components/Footer'
 import Products from './pages/Products'
 import About from './pages/About'
 import { Route, Routes } from 'react-router-dom'
+import ProductsReviews from './components/ProductsReviews'
+import ProductsDescription from './components/ProductsDescription'
+import ProductDetail from './pages/ProductDetail'
 
 function App() {
 
@@ -16,13 +19,21 @@ function App() {
 
       <Routes>
 
-        <Route path='/' element={ <Home /> }/>
+        <Route path='/' element={<Home />} />
 
 
-        <Route path='/products' element={ <Products /> }/>
+        <Route path='/products' element={<Products />} />
 
 
-        <Route path='/about' element={ <About /> }/>
+        <Route path='/products/:id' element={<ProductDetail />}>
+
+          <Route index element={ <ProductsDescription /> }/>
+
+          <Route path='reviews' element={ <ProductsReviews />} />
+
+        </Route>
+
+        <Route path='/about' element={<About />} />
 
 
       </Routes>

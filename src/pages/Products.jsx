@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+
 
 export default function Products() {
     const [products, setProducts] = useState()
@@ -23,10 +25,15 @@ export default function Products() {
                     <div key={product.id} className="p-4 bg-zinc-800 rounded">
                         <img src={product.thumbnail} />
                         <h1>{product.title}</h1>
-                        <p>
+                        <p className="mb-2">
                             ${product.price}
                         </p>
-                        
+                        <Link
+                            to={`/products/${product.id}`}
+                            className="mt-4 px-3 py-2 rounded bg-blue-600 hover:bg-blue-500"
+                        >
+                            Ver producto
+                        </Link>
                     </div>
                 ))}
             </div>
