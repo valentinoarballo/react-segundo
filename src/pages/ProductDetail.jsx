@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Outlet, useParams } from "react-router-dom"
 import { Link, NavLink } from "react-router-dom"
+import { CartContext } from "../context/CartContext"
 
 export default function ProductDetail() {
 
@@ -12,7 +13,6 @@ export default function ProductDetail() {
         fetch(`https://dummyjson.com/products/${id}`)
             .then(res => res.json())
             .then((data) => {
-                console.log(data)
                 setProduct(data)
                 setLoading(false)
             });
@@ -20,6 +20,7 @@ export default function ProductDetail() {
 
     if (loading) return <h1 className="text-6xl font-bold">Cargando...</h1>
 
+    const { addToCart } = useContext(CartContext)
 
     return (
         <div className="max-w-3xl mx-auto pt-6 px-4 w-full">
@@ -31,6 +32,12 @@ export default function ProductDetail() {
                     <h1 className="text-3xl font-bold">{product.title}</h1>
                     <p className="text-2xl font-semibold text-green-400 mt-2">${product.price}</p>
                     <p className="text-zinc-400 text-sm mt-1">Categoría: {product.category}</p>
+                    <button 
+                    onClick={() => addToCart(product)}
+                    className="bg-blue-600 hover:bg-blue-700 cursor-pointer px-4 py-2 my-2 rounded"
+                    >
+                        Agregar al carrito
+                    </button>
                 </div>
             </div>
 

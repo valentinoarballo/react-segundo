@@ -10,7 +10,6 @@ export default function Products() {
         fetch('https://dummyjson.com/products')
             .then(res => res.json())
             .then((data) => {
-                console.log(data.products)
                 setProducts(data.products)
                 setLoading(false)
             });
