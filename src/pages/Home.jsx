@@ -1,4 +1,6 @@
+import { useContext } from "react"
 import { useState, useEffect } from "react"
+import { UserContext } from "../context/UserContext"
 
 const listaUsuarios = [
   { id: 1, nombre: "Valentino Arballo", email: "v.arballo@itecriocuarto.org.ar" },
@@ -8,17 +10,7 @@ const listaUsuarios = [
 
 export default function Home() {
 
-
-  const [user, setUser] = useState({
-    nombre: "valentino",
-    admin: true,
-  })
-
-  
-  const handleAdmin = () => {
-    setUser({ ...user, admin: !user.admin })
-  }
-
+  const { user, toggleAdmin } = useContext(UserContext)
 
   return (
     <main className="flex-1 flex flex-col justify-center items-center">
@@ -26,7 +18,7 @@ export default function Home() {
       <p className="text-blue-500 font-semibold mb-6">Explora nuestro catálogo!</p>
 
       <button
-        onClick={handleAdmin}
+        onClick={toggleAdmin}
         className="bg-purple-600 text-xs px-4 py-2 rounded-full cursor-pointer font-semibold my-5"
       >
         Simular Rol: {user.admin ? "Admin" : "User Normal"}
