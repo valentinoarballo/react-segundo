@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { CartContext } from "../context/CartContext"
 import { UserContext } from "../context/UserContext"
-
+import Carrito from "./Carrito"
 export default function Navbar() {
   const linkStyle = ({ isActive }) => isActive ? "text-blue-400 font-black" : "cursor-pointer text-blue-500 hover:text-blue-400 transition-colors"
 
@@ -26,7 +26,7 @@ export default function Navbar() {
       </ul>
 
       <div className="bg-blue-600 font-bold px-4 py-1 rounded cursor-pointer">
-        {cart.length > 0 ? (<p>Carrito: {cart.length}</p>) : (<p>Mi carrito</p>)}
+        {cart.length > 0 ? (<p>Carrito: {cart.length}</p>) : (<Carrito />)}
       </div>
 
     </nav>
