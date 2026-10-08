@@ -8,7 +8,8 @@ export default function ProductDetail() {
     const { id } = useParams()
     const [product, setProduct] = useState()
     const [loading, setLoading] = useState(true)
-
+    const { addToCart } = useContext(CartContext)
+    
     useEffect(() => {
         fetch(`https://dummyjson.com/products/${id}`)
             .then(res => res.json())
@@ -20,7 +21,7 @@ export default function ProductDetail() {
 
     if (loading) return <h1 className="text-6xl font-bold">Cargando...</h1>
 
-    const { addToCart } = useContext(CartContext)
+
 
     return (
         <div className="max-w-3xl mx-auto pt-6 px-4 w-full">

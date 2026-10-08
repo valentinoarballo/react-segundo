@@ -10,6 +10,7 @@ import ProductDetail from './pages/ProductDetail'
 import { CartProvider } from './context/CartContext'
 import { UserProvider } from './context/UserContext'
 import AgregarProducto from './pages/AgregarProducto'
+import Cart from './components/Cart'
 
 function App() {
 
@@ -23,6 +24,8 @@ function App() {
           <Routes>
 
             <Route path='/' element={<Home />} />
+            
+            <Route path='/cart' element={<Cart />} />
 
 
             <Route path='/products' element={<Products />} />

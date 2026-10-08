@@ -6,7 +6,7 @@ import { UserContext } from "../context/UserContext"
 export default function Navbar() {
   const linkStyle = ({ isActive }) => isActive ? "text-blue-400 font-black" : "cursor-pointer text-blue-500 hover:text-blue-400 transition-colors"
 
-  const { cart } = useContext(CartContext)
+  const { totalItems } = useContext(CartContext)
 
   const { user } = useContext(UserContext)
 
@@ -26,7 +26,7 @@ export default function Navbar() {
       </ul>
 
       <div className="bg-blue-600 font-bold px-4 py-1 rounded cursor-pointer">
-        {cart.length > 0 ? (<p>Carrito: {cart.length}</p>) : (<p>Mi carrito</p>)}
+        {totalItems > 0 ? (<p>Carrito: {totalItems}</p>) : (<p>Mi carrito</p>)}
       </div>
 
     </nav>
