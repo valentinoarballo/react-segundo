@@ -25,9 +25,9 @@ export default function Navbar() {
 
       </ul>
 
-      <div className="bg-blue-600 font-bold px-4 py-1 rounded cursor-pointer">
+      <Link to={"/cart"} className="bg-blue-600 font-bold px-4 py-1 rounded cursor-pointer">
         {totalItems > 0 ? (<p>Carrito: {totalItems}</p>) : (<p>Mi carrito</p>)}
-      </div>
+      </Link>
 
     </nav>
   )
